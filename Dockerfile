@@ -7,7 +7,7 @@ RUN crontab -l | { cat; echo "0 * * * * php /var/www/html/one.php token:refresh"
 RUN crontab -l | { cat; echo "10 * * * * php /var/www/html/one.php cache:refresh >> /tmp/one.refresh.log"; } | crontab -
 
 WORKDIR /var/www/html
-COPY /one/ /var/www/html/
+COPY / /var/www/html/
 RUN apk add --no-cache nginx \
     && mkdir /run/nginx \
     && chown -R www-data:www-data aria2/ cache/ config/ \
